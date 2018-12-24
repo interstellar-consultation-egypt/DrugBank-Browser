@@ -1,7 +1,7 @@
 library(collapsibleTree)
 
 collapsibleTree(warpbreaks, c("wool", "tension", "breaks"))
-#-----------------------------------------------------------
+
 library(data.tree)
 
 acme <- Node$new("Acme Inc.")
