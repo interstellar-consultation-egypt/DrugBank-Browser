@@ -1,13 +1,10 @@
 # Features
-* Upload drug bank database
-* Display meta data
-* Offer multiple parsing choices:
-  * Single Feature
-  * Multiple features
+* Drugbank will be exist by defualt
+  * Upload drug bank database (in case of new verion exist)
 * For each Feature:
   * display statitics
   * display table
   * download data
-* display erd like features relations
+* display tree like features relations
 * Descriptive Statistics
   * bar/pie/line/histogram/boxplot
