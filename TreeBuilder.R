@@ -22,6 +22,21 @@ drugs_all <- drugs %>%
 # examples
 collapsibleTree(drugs_all, c("created_year", "created_month", "group", "state"))
 collapsibleTree(drugs_all, c("state", "group","created_year", "created_month"))
+
+# another way
+drugs %>% 
+  select(primary_key, type = type, state, created) %>%
+  full_join(drug_groups, by = c("primary_key" = "parent_key")) %>% 
+  rename(group = "text") %>% 
+  mutate(created_year = year(created), created_month = month(created)) %>% 
+  group_by(created_year, created_month, group, state) %>%
+  summarize(`Number of Drugs` = n()) %>%
+  collapsibleTreeSummary(
+  hierarchy = c("created_year", "created_month", "group", "state"),
+  root = "Drugs",
+  width = 800,
+  attribute = "Number of Drugs"
+)
 # drugs_tree <- as.Node(drugs_all)
 # collapsibleTree(drugs_tree)
 # Drug
