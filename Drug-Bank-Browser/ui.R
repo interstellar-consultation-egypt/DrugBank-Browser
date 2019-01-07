@@ -8,7 +8,8 @@
 #
 
 library(shiny)
-
+library(collapsibleTree)
+require(colorspace)
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
   
@@ -23,6 +24,7 @@ shinyUI(fluidPage(
         choices = c(
           "created_year", "created_month", "group", "state"
         ),
+        selected = c("group", "state"),
         multiple = TRUE
       ),
       tags$p("The node you most recently clicked:"),

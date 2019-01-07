@@ -6,7 +6,7 @@
 # 
 #    http://shiny.rstudio.com/
 #
-
+require(colorspace)
 library(shiny)
 library(data.tree)
 library(tidyverse)
@@ -14,11 +14,11 @@ library(lubridate)
 library(forcats)
 library(collapsibleTree)
 ## Read drugs
-drugs <- read_csv(file = "../data/drugs.csv")
+drugs <- read_csv(file = "data/drugs.csv")
 drugs$type <- as.factor(drugs$type)
 drugs$state <-fct_explicit_na(drugs$state, "Unknown") 
 ## Read Groups
-drug_groups <- read_csv("../data/drug_groups.csv")
+drug_groups <- read_csv("data/drug_groups.csv")
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
