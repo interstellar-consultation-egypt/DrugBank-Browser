@@ -15,11 +15,15 @@ drugs_all <- drugs %>%
   select(primary_key, type = type, state, created) %>%
   full_join(drug_groups, by = c("primary_key" = "parent_key")) %>% 
   rename(group = "text") %>% 
-  mutate(created_year = year(created), created_month = month(created)) %>% 
-  mutate(pathString = paste("drugs", type, group, state, created_year, created_month, sep = "/"))
+  mutate(created_year = year(created), created_month = month(created))
+# %>% 
+#   mutate(pathString = paste("drugs", type, group, state, created_year, created_month, sep = "/"))
 
-drugs_tree <- as.Node(drugs_all)
-print(drugs_tree)
+# examples
+collapsibleTree(drugs_all, c("created_year", "created_month", "group", "state"))
+collapsibleTree(drugs_all, c("state", "group","created_year", "created_month"))
+# drugs_tree <- as.Node(drugs_all)
+# collapsibleTree(drugs_tree)
 # Drug
 
 ## Bio Tech
