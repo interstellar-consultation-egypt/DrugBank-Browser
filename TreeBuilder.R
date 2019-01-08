@@ -5,11 +5,11 @@ library(forcats)
 library(collapsibleTree)
 # Build new data fram for tree browser
 ## Read drugs
-drugs <- read_csv(file = "data/drugs.csv")
+drugs <- read_csv(file = "Drug-Bank-Browser/data/drugs.csv")
 drugs$type <- as.factor(drugs$type)
 drugs$state <-fct_explicit_na(drugs$state, "Unknown") 
 ## Read Groups
-drug_groups <- read_csv("data/drug_groups.csv")
+drug_groups <- read_csv("Drug-Bank-Browser/data/drug_groups.csv")
 ## merge boths
 drugs_all <- drugs %>% 
   select(primary_key, type = type, state, created) %>%
