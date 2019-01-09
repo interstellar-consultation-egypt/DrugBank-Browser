@@ -27,14 +27,15 @@ shinyUI(fluidPage(
         selected = c("group", "state"),
         multiple = TRUE
       ),
-      tags$p("The node you most recently clicked:"),
-      verbatimTextOutput("str"),
+      #tags$p("The node you most recently clicked:"),
+      #verbatimTextOutput("str"),
       tags$br()
     ),
     
     # Show a plot of the generated distribution
     mainPanel(
-      collapsibleTreeOutput("plot", height = "500px")
+      collapsibleTreeOutput("plot"),
+      dataTableOutput("drugs")
     )
   )
 ))
