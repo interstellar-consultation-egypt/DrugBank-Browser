@@ -10,11 +10,13 @@
 library(shiny)
 library(collapsibleTree)
 require(colorspace)
+library(DT)
+
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Old Faithful Geyser Data"),
+  titlePanel("Drug Bank Browser"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
@@ -27,8 +29,6 @@ shinyUI(fluidPage(
         selected = c("group", "state"),
         multiple = TRUE
       ),
-      #tags$p("The node you most recently clicked:"),
-      #verbatimTextOutput("str"),
       tags$br()
     ),
     
