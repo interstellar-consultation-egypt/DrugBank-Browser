@@ -30,7 +30,7 @@ drugs_all <- drugs %>%
   group_by(created_year, created_month, group, state)
 
 drugs_df <- reactiveValues(data = drugs_all %>%
-                             select(name, type, state, group, created_year, created_month))
+                             select(name, type, state, group, created_year, created_month)) 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
   output$plot <- renderCollapsibleTree({
