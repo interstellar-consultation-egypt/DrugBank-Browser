@@ -1,7 +1,7 @@
 library(data.tree)
 library(collapsibleTree)
 library(igraph)
-
+library(networkD3)
 # search for salts, international-brands
 # Main node
 drug <- Node$new("Drugs")
@@ -99,4 +99,5 @@ transporters_polypeptides_synonyms <-transporters_polypeptides$AddChild("Synonym
 print(drug)
 plot(drug)
 # Must rename nodes (not recommending it)
-plot(as.igraph(drug, directed = TRUE, direction = "climb"))
+#plot(as.igraph(drug, directed = TRUE, direction = "climb"))
+radialNetwork(ToListExplicit(drug, unname = TRUE))
