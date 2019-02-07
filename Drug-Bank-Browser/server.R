@@ -8,13 +8,18 @@ drugs_tree <- build_drug_bank_tree()
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
   output$radial_drug <- renderRadialNetwork({
-    onRender(
-    radialNetwork(
+    drug_radial_network <-  radialNetwork(
       ToListExplicit(drugs_tree, unname = TRUE),
       linkColour = "#ccc",
       nodeColour = "#fff",
       nodeStroke = "orange",
       textColour = "#cccccc"
-    ), clickJS)
+    )
+    onRender(
+     drug_radial_network,
+      clickJS
+    )
   })
+  
+  output$text <- renderPrint({ input$id })
 })

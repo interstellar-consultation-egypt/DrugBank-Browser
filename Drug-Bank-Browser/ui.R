@@ -12,6 +12,6 @@ shinyUI(fluidPage(
   )),
   fluidRow(column(
     width = 12,
-    tags$script(clickJS)
+    textOutput("text")
   ))
 ))
