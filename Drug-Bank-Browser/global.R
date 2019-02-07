@@ -1,0 +1,1 @@
+clickJS <- 'd3.selectAll(".node").on("click", function(d){ alert(d.data); })'
