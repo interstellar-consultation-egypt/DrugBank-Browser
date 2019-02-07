@@ -6,8 +6,12 @@ shinyUI(fluidPage(
   # Application title
   titlePanel("Drug Bank Browser"),
   
-  fluidRow(
-    column(width = 12,
-           radialNetworkOutput("radial_drug"))
-  )
+  fluidRow(column(
+    width = 12,
+    radialNetworkOutput("radial_drug")
+  )),
+  fluidRow(column(
+    width = 12,
+    tags$script(clickJS)
+  ))
 ))
