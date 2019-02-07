@@ -15,11 +15,11 @@ shinyServer(function(input, output) {
       nodeStroke = "orange",
       textColour = "#cccccc"
     )
-    onRender(
-     drug_radial_network,
-      clickJS
-    )
+    onRender(drug_radial_network,
+             clickJS)
   })
   
-  output$text <- renderPrint({ input$id })
+  output$text <- renderPrint({
+    paste(paste(input$name, input$parent, "at", input$depth))
+  })
 })
