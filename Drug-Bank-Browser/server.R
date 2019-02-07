@@ -1,5 +1,4 @@
 library(shiny)
-library(networkD3)
 library(htmlwidgets)
 source("Drug_Structure_Tree_Builder.R", local = TRUE)
 
@@ -20,6 +19,6 @@ shinyServer(function(input, output) {
   })
   
   output$text <- renderPrint({
-    paste(paste(input$name, input$parent, "at", input$depth))
+    paste(paste(input$name, input$parent))
   })
 })
