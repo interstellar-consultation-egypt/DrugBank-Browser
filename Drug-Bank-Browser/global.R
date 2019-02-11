@@ -1,5 +1,6 @@
+library(shiny)
 library(networkD3)
-
+library(DT)
 clickJS <- 'd3.selectAll(".node").on("click", function(d){
 parent = "";
 depth = d.depth;

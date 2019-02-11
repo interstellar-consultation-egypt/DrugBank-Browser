@@ -1,4 +1,4 @@
-library(shiny)
+library(tidyverse)
 library(htmlwidgets)
 source("Drug_Structure_Tree_Builder.R", local = TRUE)
 source("UtilityFunctions.R", local = TRUE)
@@ -19,9 +19,11 @@ shinyServer(function(input, output) {
              clickJS)
   })
   
-  output$text <- renderPrint({
-    node_name <- replace_space_with_underscore(input$name)
-    full_name <- construct_file_name(node_name, input$parent)
-    return(full_name)
+  data <- reactive({
+    full_path <- get_dataset_full_path(input$name, input$parent)
+    read_csv(full_path)
+  })
+  output$drug_table <- renderDataTable({
+    return(data())
   })
 })  

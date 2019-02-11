@@ -1,4 +1,3 @@
-library(shiny)
 library(shinythemes)
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
@@ -12,6 +11,6 @@ shinyUI(fluidPage(
   )),
   fluidRow(column(
     width = 12,
-    textOutput("text")
+    dataTableOutput("drug_table")
   ))
 ))
