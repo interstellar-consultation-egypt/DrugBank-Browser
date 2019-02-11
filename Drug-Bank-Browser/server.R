@@ -1,3 +1,12 @@
+# col names
+# drug id link
+# Column Rendering: description abbriviation
+# search options:
+## https://rstudio.github.io/DT/007-search.html
+# cell formats:
+## https://rstudio.github.io/DT/functions.html
+# buttons:
+## https://rstudio.github.io/DT/extensions.html
 library(tidyverse)
 library(htmlwidgets)
 source("Drug_Structure_Tree_Builder.R", local = TRUE)
@@ -30,6 +39,13 @@ shinyServer(function(input, output) {
     
   })
   output$drug_table <- renderDataTable({
-    return(datatable(data(), style = 'bootstrap'))
+    return(datatable(
+      data(), 
+      style = 'bootstrap',
+      rownames = FALSE,
+      filter = 'top',
+      options = list(
+        pageLength = 5,
+        autoWidth = TRUE)))
   })
 })  
