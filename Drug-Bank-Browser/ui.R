@@ -4,7 +4,7 @@ library(shinythemes)
 shinyUI(fluidPage(
   theme = shinytheme("slate"),
   # Application title
-  titlePanel("Drug Bank Browser"),
+  titlePanel("DrugBank Browser"),
   
   fluidRow(column(
     width = 12,
