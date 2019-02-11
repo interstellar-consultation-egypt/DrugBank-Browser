@@ -5,9 +5,13 @@ parent = "";
 depth = d.depth;
 current_node = d;
 while (depth > 0) {
-  parent = parent + ", " + current_node.parent.data.name;
+  parent_name = current_node.parent.data.name;
   depth = current_node.parent.depth;
   current_node =  current_node.parent;
+  if (parent_name == "References") {
+    continue;
+  }
+  parent = parent + "_" + parent_name;
 }
 Shiny.setInputValue("parent", parent);
 Shiny.setInputValue("name", d.data.name);

@@ -1,6 +1,7 @@
 library(shiny)
 library(htmlwidgets)
 source("Drug_Structure_Tree_Builder.R", local = TRUE)
+source("UtilityFunctions.R", local = TRUE)
 
 drugs_tree <- build_drug_bank_tree()
 
@@ -19,6 +20,8 @@ shinyServer(function(input, output) {
   })
   
   output$text <- renderPrint({
-    paste(paste(input$name, input$parent))
+    node_name <- replace_space_with_underscore(input$name)
+    full_name <- construct_file_name(node_name, input$parent)
+    return(full_name)
   })
-})
+})  
