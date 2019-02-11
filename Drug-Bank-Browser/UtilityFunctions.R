@@ -2,7 +2,7 @@ replace_space_with_underscore <- function(name) {
   return(gsub(" ", "_", name))
 }
 
-construct_file_name <- function(name, parent) {
+construct_file_name <- function(name, parent = "") {
   if (parent == "") {
     return(paste0(name, ".csv"))
   }
