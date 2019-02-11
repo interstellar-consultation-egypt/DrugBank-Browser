@@ -15,3 +15,7 @@ get_dataset_full_path <- function(node, parent) {
   full_path <- paste0("./data/", full_name)
   return(full_path)
 }
+
+get_drugs <- function(data) {
+  data %>% select(primary_key, name, state, created)
+}

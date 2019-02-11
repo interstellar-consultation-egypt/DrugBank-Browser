@@ -21,10 +21,15 @@ shinyServer(function(input, output) {
   
   data <- reactive({
     req(input$name)
-    full_path <- get_dataset_full_path(input$name, input$parent)
-    read_csv(full_path)
+    selected_node <- input$name
+    full_path <- get_dataset_full_path(selected_node, input$parent)
+    data <- read_csv(full_path)
+    switch(selected_node,
+           "Drugs" = get_drugs(data),
+           data)
+    
   })
   output$drug_table <- renderDataTable({
-    return(data())
+    return(datatable(data(), style = 'bootstrap'))
   })
 })  
