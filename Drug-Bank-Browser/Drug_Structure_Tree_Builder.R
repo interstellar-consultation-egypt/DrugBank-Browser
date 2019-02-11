@@ -6,6 +6,8 @@ build_drug_bank_tree <- function() {
   
   groups <- drug$AddChild("Groups")
   
+  names <- drug$AddChild("Names")
+  
   references <- drug$AddChild("References")
   articles <- references$AddChild("Articles")
   books <- references$AddChild("Books")
