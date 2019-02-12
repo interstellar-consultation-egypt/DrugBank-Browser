@@ -1,3 +1,5 @@
+# Visibility
+## https://rstudio.github.io/DT/extensions.html
 # col names
 # drug id link
 # Column Rendering: description abbriviation
@@ -38,14 +40,25 @@ shinyServer(function(input, output) {
            data)
     
   })
-  output$drug_table <- renderDataTable({
-    return(datatable(
-      data(), 
-      style = 'bootstrap',
-      rownames = FALSE,
-      filter = 'top',
-      options = list(
-        pageLength = 5,
-        autoWidth = TRUE)))
-  })
+  output$drug_table <- renderDataTable(
+    data(),
+    style = "bootstrap",
+    escape = FALSE,
+    rownames = FALSE,
+    filter = "top",
+    extensions = "Buttons",
+    options = list(
+      scrollX = TRUE,
+      pageLength = 5,
+      autoWidth = TRUE,
+      dom = "lfrtiBp",
+      buttons = c("copy", "excel", "pdf", "print", "colvis"),
+      extensions = "Buttons",
+      columnDefs = list(list(
+        visible = FALSE,
+        targets = hidden_columns[[input$name]]
+      ))
+    )
+    
+  )
 })  
