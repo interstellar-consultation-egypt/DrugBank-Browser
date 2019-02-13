@@ -17,7 +17,9 @@ get_dataset_full_path <- function(node, parent) {
 }
 
 get_drugs <- function(data) {
-  data
+  data$State <- as_factor(data$State)
+  data$Type <- as_factor(data$Type)
+  return(data)
 }
 
-hidden_columns <- list("Drugs"= c(1,2,5,7:10,11,13:25))
+hidden_columns <- list("Drugs"= c(1,2,5,7:9,11,13:25))
