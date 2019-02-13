@@ -46,17 +46,29 @@ shinyServer(function(input, output) {
       pageLength = 5,
       autoWidth = TRUE,
       dom = "lfrtiBp",
-      buttons = c("copy", "excel", "pdf", "print", "colvis"),
+      buttons =  list(
+        'copy',
+        'print',
+        list(
+          extend = 'collection',
+          buttons = c('csv', 'excel', 'pdf'),
+          text = 'Download'
+        ),
+        "colvis"
+      ),
       extensions = "Buttons",
       search = list(regex = TRUE, caseInsensitive = FALSE),
       columnDefs = list(
         list(visible = FALSE, targets = hidden_columns[[input$name]]),
-        list(render = JS(
-          "function(data, type, row, meta) {",
-          "return type === 'display' && data && data.length > 25 ?",
-          "'<span title=\"' + data + '\">' + data.substr(0, 25) + '...</span>' : data;",
-          "}"
-        ), targets = abbriviated_columns[[input$name]])
+        list(
+          render = JS(
+            "function(data, type, row, meta) {",
+            "return type === 'display' && data && data.length > 25 ?",
+            "'<span title=\"' + data + '\">' + data.substr(0, 25) + '...</span>' : data;",
+            "}"
+          ),
+          targets = abbriviated_columns[[input$name]]
+        )
       )
     )
     
