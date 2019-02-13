@@ -54,11 +54,10 @@ shinyServer(function(input, output) {
         list(visible = FALSE, targets = hidden_columns[[input$name]]),
         list(render = JS(
           "function(data, type, row, meta) {",
-          "if (data) {",
-          "return type === 'display' && data.length > 25 ?",
+          "return type === 'display' && data && data.length > 25 ?",
           "'<span title=\"' + data + '\">' + data.substr(0, 25) + '...</span>' : data;",
-          "}}"
-        ), targets = "_all")
+          "}"
+        ), targets = abbriviated_columns[[input$name]])
       )
     )
     

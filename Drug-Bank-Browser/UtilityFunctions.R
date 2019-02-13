@@ -36,3 +36,4 @@ get_drugs <- function(data) {
 }
 
 hidden_columns <- list("Drugs" = c(1, 2, 5, 7:9, 11, 13:25))
+abbriviated_columns <- list("Drugs" = c(7, 11:16, 19, 20, 23, 24))
