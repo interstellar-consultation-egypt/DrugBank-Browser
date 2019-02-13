@@ -1,5 +1,3 @@
-# search options:
-## https://rstudio.github.io/DT/007-search.html
 # cell formats:
 ## https://rstudio.github.io/DT/functions.html
 # buttons:
@@ -44,6 +42,7 @@ shinyServer(function(input, output) {
     extensions = "Buttons",
     options = list(
       scrollX = TRUE,
+      searchHighlight = TRUE,
       pageLength = 5,
       autoWidth = TRUE,
       dom = "lfrtiBp",
