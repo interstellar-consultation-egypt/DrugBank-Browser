@@ -1,4 +1,3 @@
-# Resolve url issues after abbriviation
 # search options:
 ## https://rstudio.github.io/DT/007-search.html
 # cell formats:
@@ -50,6 +49,7 @@ shinyServer(function(input, output) {
       dom = "lfrtiBp",
       buttons = c("copy", "excel", "pdf", "print", "colvis"),
       extensions = "Buttons",
+      search = list(regex = TRUE, caseInsensitive = FALSE),
       columnDefs = list(
         list(visible = FALSE, targets = hidden_columns[[input$name]]),
         list(render = JS(
