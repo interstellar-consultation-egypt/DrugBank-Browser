@@ -17,9 +17,22 @@ get_dataset_full_path <- function(node, parent) {
 }
 
 get_drugs <- function(data) {
+  data$`DrugBank ID` <-
+    paste0(
+      "<a href=\"https://www.drugbank.ca/drugs/",
+      data$`DrugBank ID`,
+      "\">",
+      data$`DrugBank ID`
+    )
+  data$`FDA Label` <- paste0("<a href=",
+                             data$`FDA Label`, "\">",
+                             data$`FDA Label`)
+  data$MSDS <- paste0("<a href=",
+                             data$MSDS, "\">",
+                             data$MSDS)
   data$State <- as_factor(data$State)
   data$Type <- as_factor(data$Type)
   return(data)
 }
 
-hidden_columns <- list("Drugs"= c(1,2,5,7:9,11,13:25))
+hidden_columns <- list("Drugs" = c(1, 2, 5, 7:9, 11, 13:25))

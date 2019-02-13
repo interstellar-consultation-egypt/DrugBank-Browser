@@ -1,6 +1,3 @@
-# Visibility
-## https://rstudio.github.io/DT/extensions.html
-# col names
 # drug id link
 # Column Rendering: description abbriviation
 # search options:
