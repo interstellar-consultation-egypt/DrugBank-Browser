@@ -1,5 +1,4 @@
-# drug id link
-# Column Rendering: description abbriviation
+# Resolve url issues after abbriviation
 # search options:
 ## https://rstudio.github.io/DT/007-search.html
 # cell formats:
@@ -51,10 +50,16 @@ shinyServer(function(input, output) {
       dom = "lfrtiBp",
       buttons = c("copy", "excel", "pdf", "print", "colvis"),
       extensions = "Buttons",
-      columnDefs = list(list(
-        visible = FALSE,
-        targets = hidden_columns[[input$name]]
-      ))
+      columnDefs = list(
+        list(visible = FALSE, targets = hidden_columns[[input$name]]),
+        list(render = JS(
+          "function(data, type, row, meta) {",
+          "if (data) {",
+          "return type === 'display' && data.length > 25 ?",
+          "'<span title=\"' + data + '\">' + data.substr(0, 25) + '...</span>' : data;",
+          "}}"
+        ), targets = "_all")
+      )
     )
     
   )
