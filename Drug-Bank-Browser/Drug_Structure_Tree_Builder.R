@@ -1,4 +1,5 @@
 library(data.tree)
+library(networkD3)
 # search for salts, international-brands
 # Main node
 build_drug_bank_tree <- function() {
@@ -121,3 +122,6 @@ build_drug_bank_tree <- function() {
   
   return(drug)
 }
+
+radialNetwork(
+  ToListExplicit(build_drug_bank_tree(), unname = TRUE))

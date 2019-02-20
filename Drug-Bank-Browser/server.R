@@ -1,3 +1,11 @@
+# Download
+## https://github.com/rstudio/DT/issues/267
+## https://rstudio.github.io/DT/server.html
+# Save filters and sorting
+## https://stackoverflow.com/questions/43973863/keep-datatable-sort-between-tabs-in-shiny
+## https://stackoverflow.com/questions/52858889/extract-filters-from-r-shiny-datatable
+## https://stackoverflow.com/questions/44599021/statesave-not-preserving-filters-in-shiny-datatable
+## https://stackoverflow.com/questions/27965791/how-to-save-sorting-in-datatable-in-shiny
 # cell formats:
 ## https://rstudio.github.io/DT/functions.html
 # buttons:
@@ -73,4 +81,10 @@ shinyServer(function(input, output) {
     )
     
   )
+  
+  output$describe <- renderCodebook({
+    codebook(data = as.data.frame(drugs))
+    
+  })
+  
 })  
