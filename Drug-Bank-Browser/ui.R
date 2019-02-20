@@ -6,16 +6,16 @@ shinyUI(fluidPage(
   titlePanel("DrugBank Browser"),
   tabsetPanel(
     type = "tabs",
-    # tabPanel("main",
-    #          fluidRow(column(
-    #            width = 12,
-    #            radialNetworkOutput("radial_drug")
-    #          )),
-    #          fluidRow(column(
-    #            width = 12,
-    #            dataTableOutput("drug_table")
-    #            
-    #          ))),
+    tabPanel("main",
+             fluidRow(column(
+               width = 12,
+               radialNetworkOutput("radial_drug")
+             )),
+             fluidRow(column(
+               width = 12,
+               dataTableOutput("drug_table")
+               
+             ))),
     tabPanel("stat",
              codebookOutput("describe"))
   )

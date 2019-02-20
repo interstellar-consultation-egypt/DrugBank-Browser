@@ -17,6 +17,15 @@ source("UtilityFunctions.R", local = TRUE)
 
 drugs_tree <- build_drug_bank_tree()
 
+colorVector <- c("black", "red", "blue", "green", "orange", 
+                 rep("red", 5), rep("blue", 5), rep("green", 4), rep("orange", 4),
+                 rep("red", 11), rep("blue", 14), rep("green", 14), rep("orange", 11))
+
+jsarray <- paste0('["', paste(colorVector, collapse = '", "'), '"]')
+nodeStrokeJS <- JS(paste0('function(d, i) { return ', jsarray, '[i]; alert("hi") }'))
+
+MyClickScript <-'alert("You clicked " + d.name + " which is in row " +(d.index + 1) +  " of your original R data frame");'
+#clickJS <- 'function(el, x) {d3.selectAll(".node").on("click", function(d){ alert(d.data.name); })}'
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
   output$radial_drug <- renderRadialNetwork({
@@ -24,11 +33,11 @@ shinyServer(function(input, output) {
       ToListExplicit(drugs_tree, unname = TRUE),
       linkColour = "#ccc",
       nodeColour = "#fff",
-      nodeStroke = "orange",
-      textColour = "#cccccc"
+      #nodeStroke = "orange",
+      textColour = "#cccccc",
+      nodeStroke = nodeStrokeJS
     )
-    onRender(drug_radial_network,
-             clickJS)
+    onRender(drug_radial_network, clickJS)
   })
   
   data <- reactive({
@@ -83,7 +92,7 @@ shinyServer(function(input, output) {
   )
   
   output$describe <- renderCodebook({
-    codebook(data = as.data.frame(drugs))
+    codebook(data = as.data.frame(drugs)[1:100, 4:10])
     
   })
   
