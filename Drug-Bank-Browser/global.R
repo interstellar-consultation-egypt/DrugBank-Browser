@@ -2,7 +2,8 @@ library(shiny)
 library(networkD3)
 library(DT)
 library(tidyverse)
-library("datadigest")
+library(datadigest)
+library(shinydashboard)
 clickJS <- 'function(el, x) {d3.selectAll(".node").on("click", function(d){
 parent = "";
 depth = d.depth;
