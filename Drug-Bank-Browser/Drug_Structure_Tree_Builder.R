@@ -29,6 +29,8 @@ build_drug_bank_tree <- function() {
   pdb_entries <- drug$AddChild("PDB Entries")
   patents <- drug$AddChild("Patents")
   pdb_entries <- drug$AddChild("PDB Entries")
+  international_brands  <- drug$AddChild("international_brands")
+  salts  <- drug$AddChild("salts")
   
   interactions <- drug$AddChild("Interactions")
   food <- interactions$AddChild("Food")
